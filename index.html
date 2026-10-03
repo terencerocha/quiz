@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Security+ Cap. 1 — Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0F1B2D; --teal:#2DD4BF; --orange:#FB7A45;
+  --bg:#F2F5F8; --surface:#FFFFFF; --ink:#0F1B2D; --muted:#4A5A70; --line:#D3DCE6;
+  --teal-ink:#0E8F80; --orange-ink:#C2501F; --ok:#0E8F80; --bad:#C2501F;
+  --display:"Archivo", "Arial Narrow", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1B2D; --surface:#16263D; --ink:#E8EEF5; --muted:#9FB0C6; --line:#26395A;
+    --teal-ink:#2DD4BF; --orange-ink:#FB7A45; --ok:#2DD4BF; --bad:#FB7A45;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1B2D; --surface:#16263D; --ink:#E8EEF5; --muted:#9FB0C6; --line:#26395A;
+  --teal-ink:#2DD4BF; --orange-ink:#FB7A45; --ok:#2DD4BF; --bad:#FB7A45;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0 0 .5em}
+.wrap{max-width:860px;margin:0 auto;padding:0 18px 48px}
+header.top{padding:28px 0 8px}
+header.top .book{color:var(--muted);font-size:.9rem;margin:0}
+header.top h1{font-size:clamp(2rem,7vw,3.4rem);font-weight:900;font-stretch:80%;letter-spacing:-.01em;margin:.15em 0 .2em}
+header.top h1 span{display:block;font-size:.42em;font-weight:600;font-stretch:100%;color:var(--teal-ink);margin-bottom:.3em}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;gap:6px;padding:10px 0;border-bottom:2px solid var(--line);margin-bottom:22px}
+nav.tabs button{flex:1;font:600 1rem var(--display);font-stretch:90%;padding:10px 6px;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;cursor:pointer}
+nav.tabs button[aria-selected="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+:root[data-theme="dark"] nav.tabs button[aria-selected="true"]{background:var(--teal);color:var(--navy);border-color:var(--teal)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) nav.tabs button[aria-selected="true"]{background:var(--teal);color:var(--navy);border-color:var(--teal)}}
+button:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+section[hidden]{display:none}
+
+/* ---------- Aula ---------- */
+.slide{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:26px 22px;min-height:420px}
+.slide h2{font-size:clamp(1.5rem,5vw,2.1rem);font-weight:800;font-stretch:85%}
+.slide .lede{color:var(--muted);margin-top:-.2em}
+.slide ul{padding-left:1.1em;margin:.6em 0}
+.slide li{margin:.35em 0}
+.slide b{color:var(--teal-ink)}
+.trap{border-left:5px solid var(--orange);background:color-mix(in srgb,var(--orange) 10%,transparent);padding:10px 14px;border-radius:0 10px 10px 0;margin-top:14px}
+.trap strong{color:var(--orange-ink)}
+.link{border-left:5px solid var(--teal);background:color-mix(in srgb,var(--teal) 10%,transparent);padding:10px 14px;border-radius:0 10px 10px 0;margin-top:14px}
+.slidebar{display:flex;align-items:center;gap:10px;margin-top:14px}
+.slidebar button{font:700 1rem var(--display);padding:12px 18px;border-radius:10px;border:2px solid var(--navy);background:var(--surface);color:var(--ink);cursor:pointer}
+.slidebar button.primary{background:var(--orange);border-color:var(--orange);color:#fff}
+.slidebar button:disabled{opacity:.35;cursor:default}
+.progress{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--teal);transition:width .25s}
+.count{font:600 .9rem var(--display);color:var(--muted);min-width:3.5em;text-align:right}
+
+/* the mirrored triads */
+.triads{display:grid;grid-template-columns:1fr auto 1fr;gap:6px 10px;align-items:center;margin:16px 0}
+.triads .h{font:800 1.05rem var(--display);text-align:center}
+.triads .c{background:var(--teal);color:var(--navy);font:800 1rem var(--display);padding:12px;border-radius:10px;text-align:center}
+.triads .d{background:var(--orange);color:#fff;font:800 1rem var(--display);padding:12px;border-radius:10px;text-align:center}
+.triads .x{font:900 1.3rem var(--display);color:var(--muted)}
+
+.dad{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.dad .col{border:2px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;font-size:.92rem}
+.dad .hd{background:var(--orange);color:#fff;padding:10px 12px}
+.dad .hd b{display:block;font:900 1.25rem var(--display);font-stretch:85%;color:#fff}
+.dad .hd small{font:600 .85rem var(--display);opacity:.95}
+.dad .bd{padding:10px 12px;display:grid;gap:8px}
+.dad .bd p{margin:0}
+.dad .k{font:700 .85rem var(--display);color:var(--orange-ink);display:block}
+.dad .k.def{color:var(--teal-ink)}
+@media (max-width:700px){.dad{grid-template-columns:1fr}}
+.tbl{overflow-x:auto;margin:12px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{border-bottom:1px solid var(--line);padding:8px 8px;text-align:left;vertical-align:top}
+th{font-family:var(--display);font-weight:700}
+
+/* ---------- Resumo ---------- */
+.resumo h2{font-size:1.6rem;font-weight:800;font-stretch:85%;margin-top:1.4em}
+.resumo h2:first-child{margin-top:0}
+.resumo p{max-width:68ch}
+
+/* ---------- Quiz ---------- */
+.qcard{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:22px}
+.hud{display:flex;flex-wrap:wrap;gap:8px 18px;font:600 .95rem var(--display);color:var(--muted);margin-bottom:12px}
+.hud b{color:var(--ink)}
+.timer{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-bottom:16px}
+.timer i{display:block;height:100%;background:var(--teal);width:100%}
+.timer.low i{background:var(--orange)}
+.qtext{font:700 1.2rem/1.35 var(--display);margin:0 0 14px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;font:inherit;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer}
+.opt kbd{font:800 .9rem var(--display);background:var(--navy);color:#fff;border-radius:6px;padding:2px 8px;flex:none}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--teal) 18%,transparent)}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--orange) 16%,transparent)}
+.opt:disabled{cursor:default}
+.explain{margin-top:14px;padding:12px 14px;border-radius:10px;background:var(--bg);border:1px solid var(--line)}
+.explain strong.ok{color:var(--ok)} .explain strong.bad{color:var(--bad)}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:14px;gap:10px}
+.qnav small{color:var(--muted)}
+.big{font:700 1rem var(--display);padding:12px 20px;border-radius:10px;border:none;background:var(--orange);color:#fff;cursor:pointer}
+.big.alt{background:var(--navy)}
+.score{font:900 4rem/1 var(--display);font-stretch:75%;color:var(--teal-ink)}
+.missed{margin-top:16px}
+.missed details{border-top:1px solid var(--line);padding:10px 0}
+.missed summary{cursor:pointer;font-weight:700}
+@media (max-width:560px){
+  nav.tabs button{font-size:.88rem;padding:10px 4px}
+  .slide{padding:20px 16px;min-height:0}
+  .triads{grid-template-columns:1fr auto 1fr}
+  .slidebar button{padding:12px 14px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <p class="book">CompTIA Security+ Study Guide SY0-701 · Chapple &amp; Seidl</p>
+  <h1><span>Capítulo 1 · O profissional de segurança hoje</span>Quiz do capítulo 1</h1>
+</header>
+<section>
+  <div class="qcard" id="qcard"></div>
+</section>
+</div>
+<script>
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+function makeQuiz({bank,card,title,intro,time=30}){
+  const qs={state:'start',order:[],i:0,score:0,streak:0,best:0,correct:0,missed:[],answered:false,cur:null};
+  let tId=null,tLeft=time;
+  const total=()=>qs.order.length;
+  const mult=()=>Math.min(3,1+Math.floor(qs.streak/2)*0.5);
+  const $=sel=>card.querySelector(sel);
+  function startScreen(){
+    qs.state='start';
+    card.innerHTML=`<h2 style="font-size:1.6rem">${title}</h2>
+    <p>${intro} ${bank.length} questões, ${time} segundos cada. Acertos seguidos multiplicam os pontos (até 3×).</p>
+    <p style="color:var(--muted)">Atalhos: <b>1–4</b> para responder, <b>Enter</b> para avançar.</p>
+    <button class="big" data-act="go">Começar quiz</button>`;
+    $('[data-act=go]').onclick=()=>begin();
+  }
+  function begin(order){
+    Object.assign(qs,{state:'question',order:order||shuffle(bank.map((_,i)=>i)),i:0,score:0,streak:0,best:0,correct:0,missed:[]});
+    showQ();
+  }
+  function showQ(){
+    qs.answered=false;
+    const q=bank[qs.order[qs.i]];
+    const perm=shuffle(q.o.map((_,k)=>k));
+    qs.cur={q,right:perm.indexOf(q.a)};
+    card.innerHTML=`<div class="hud"><span>Questão <b>${qs.i+1}/${total()}</b></span><span>Pontos <b>${qs.score}</b></span><span>Sequência <b>${qs.streak}</b> · ${mult()}×</span></div>
+    <div class="timer"><i></i></div>
+    <p class="qtext">${esc(q.q)}</p>
+    <div class="opts">${perm.map((k,n)=>`<button class="opt" data-n="${n}"><kbd>${n+1}</kbd><span>${esc(q.o[k])}</span></button>`).join('')}</div>
+    <div class="after"></div>`;
+    card.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(+b.dataset.n));
+    startTimer(true);
+  }
+  function startTimer(reset){
+    stopTimer(); if(reset) tLeft=time;
+    const bar=$('.timer'),fill=bar&&bar.firstElementChild;
+    if(!fill) return;
+    const draw=()=>{fill.style.width=(tLeft/time*100)+'%';bar.classList.toggle('low',tLeft<=8);};
+    draw();
+    tId=setInterval(()=>{tLeft-=1;draw();if(tLeft<=0){stopTimer();answer(-1);}},1000);
+  }
+  function stopTimer(){if(tId){clearInterval(tId);tId=null;}}
+  function answer(n){
+    if(qs.answered||qs.state!=='question') return; qs.answered=true; stopTimer();
+    const {q,right}=qs.cur, ok=n===right;
+    card.querySelectorAll('.opt').forEach((b,k)=>{b.disabled=true;if(k===right)b.classList.add('right');else if(k===n)b.classList.add('wrong');});
+    let gained=0;
+    if(ok){qs.streak++;qs.best=Math.max(qs.best,qs.streak);qs.correct++;gained=Math.round((100+tLeft*5)*mult());qs.score+=gained;}
+    else{qs.streak=0;qs.missed.push(qs.order[qs.i]);}
+    const last=qs.i===total()-1;
+    $('.after').innerHTML=`<div class="explain"><strong class="${ok?'ok':'bad'}">${ok?`Correto! +${gained} pontos`:(n===-1?'Tempo esgotado.':'Incorreto.')}</strong> ${esc(q.e)}</div>
+    <div class="qnav"><small>Enter para continuar</small><button class="big" data-act="adv">${last?'Ver resultado':'Próxima questão'}</button></div>`;
+    const adv=$('[data-act=adv]'); adv.onclick=advance; adv.focus({preventScroll:true});
+  }
+  function advance(){ if(qs.i<total()-1){qs.i++;showQ();} else results(); }
+  function results(){
+    qs.state='done';
+    const pct=Math.round(qs.correct/total()*100);
+    const msg=pct>=85?'Domínio sólido do tema.':pct>=70?'Bom resultado. Revise as questões que errou.':'Vale reler a aula e tentar de novo.';
+    card.innerHTML=`<div class="score">${qs.correct}/${total()}</div>
+    <p><b>${pct}% de acertos</b> · ${qs.score} pontos · melhor sequência: ${qs.best}</p>
+    <p>${msg}</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="big" data-act="again">Refazer o quiz</button>
+    ${qs.missed.length?'<button class="big alt" data-act="redo">Refazer só as erradas</button>':''}</div>
+    ${qs.missed.length?`<div class="missed"><h3 style="margin-top:18px">Questões que você errou</h3>${qs.missed.map(k=>`<details><summary>${esc(bank[k].q)}</summary><p><b>Resposta:</b> ${esc(bank[k].o[bank[k].a])}</p><p>${esc(bank[k].e)}</p></details>`).join('')}</div>`:''}`;
+    $('[data-act=again]').onclick=()=>begin();
+    const r=$('[data-act=redo]');
+    if(r){const m=[...qs.missed];r.onclick=()=>begin(shuffle(m));}
+  }
+  function key(e){
+    if(qs.state==='question'){
+      if(!qs.answered&&/^[1-4]$/.test(e.key)){const n=+e.key-1;if(n<qs.cur.q.o.length)answer(n);}
+      else if(qs.answered&&e.key==='Enter'){e.preventDefault();advance();}
+    } else if(qs.state==='start'&&e.key==='Enter'){e.preventDefault();begin();}
+  }
+  startScreen();
+  return {key,pause:stopTimer,resume:()=>{if(qs.state==='question'&&!qs.answered)startTimer(false);}};
+}
+
+const Q=[
+{q:"Um ransomware criptografa os servidores de um hospital e os médicos não conseguem acessar os prontuários. Qual objetivo da tríade CIA foi violado principalmente?",o:["Disponibilidade","Confidencialidade","Integridade","Não repúdio"],a:0,e:"Os usuários legítimos perderam o acesso ao sistema. Isso é negação (DAD), o oposto da disponibilidade."},
+{q:"Um atacante intercepta e muda o valor de uma transferência bancária antes de ela ser processada. Qual elemento da tríade DAD ocorreu?",o:["Alteração","Divulgação","Negação","Repúdio"],a:0,e:"Mudança não autorizada do dado é alteração, que viola a integridade."},
+{q:"Qual elemento da tríade DAD é o oposto direto da confidencialidade?",o:["Divulgação","Alteração","Negação","Destruição"],a:0,e:"Divulgação (disclosure) é a exposição de informação a quem não deveria vê-la."},
+{q:"Qual recurso garante que o remetente de uma mensagem não possa negar depois que a enviou?",o:["Assinatura digital","Criptografia simétrica","Hash sem chave","Mascaramento"],a:0,e:"A assinatura digital usa a chave privada do remetente, que só ele tem. Isso fornece não repúdio."},
+{q:"Uma regra de firewall que bloqueia acesso SSH vindo da internet é melhor classificada como:",o:["Técnico e preventivo","Operacional e detectivo","Gerencial e preventivo","Técnico e corretivo"],a:0,e:"É tecnologia fazendo o trabalho (técnico) e impede o incidente antes de acontecer (preventivo)."},
+{q:"Uma placa na porta do data center diz: “Área monitorada por câmeras 24h”. A placa em si é um controle de qual tipo?",o:["Dissuasivo","Detectivo","Corretivo","Compensatório"],a:0,e:"A placa não detecta nada; ela desencoraja o invasor. Já a câmera poderia ser detectiva."},
+{q:"Um IDS gera um alerta ao identificar uma varredura de portas na rede. Que tipo de controle é esse?",o:["Detectivo","Preventivo","Diretivo","Dissuasivo"],a:0,e:"O IDS identifica e alerta, mas não bloqueia. Detectar é o papel do controle detectivo (um IPS seria preventivo)."},
+{q:"Após um incidente, a equipe restaura os dados a partir do backup da noite anterior. Que tipo de controle é o backup nesse momento?",o:["Corretivo","Preventivo","Detectivo","Diretivo"],a:0,e:"Restaurar o ambiente depois do fato é ação corretiva."},
+{q:"Um sistema legado não pode receber atualizações exigidas pelo PCI DSS. A empresa o isola numa VLAN com regras restritas e monitoramento extra. Essas medidas são controles:",o:["Compensatórios","Diretivos","Dissuasivos","Corretivos"],a:0,e:"Substituem um requisito que não pode ser atendido como escrito, alcançando proteção semelhante."},
+{q:"A política de uso aceitável que diz aos funcionários o que podem fazer com os equipamentos da empresa é um controle de tipo:",o:["Diretivo","Preventivo","Detectivo","Compensatório"],a:0,e:"Controles diretivos orientam o comportamento: políticas, procedimentos e normas."},
+{q:"A diretoria realiza uma avaliação de risco anual para definir prioridades de segurança. Qual é a categoria desse controle?",o:["Gerencial","Operacional","Técnico","Físico"],a:0,e:"Controles gerenciais tratam da gestão do processo de risco, como avaliações e planejamento."},
+{q:"Um analista do SOC revisa manualmente os logs de autenticação todas as manhãs. Qual é a categoria desse controle?",o:["Operacional","Técnico","Gerencial","Físico"],a:0,e:"São pessoas executando um processo no dia a dia. Se fosse uma ferramenta automatizada, seria técnico."},
+{q:"A empresa compara os controles exigidos por um framework com os controles que já tem implementados, para descobrir o que falta. Isso é:",o:["Análise de lacunas","Teste de penetração","Análise de impacto","Modelagem de ameaças"],a:0,e:"Gap analysis compara o estado desejado com o atual e documenta as lacunas."},
+{q:"Após um vazamento, um banco recebe multa da ANPD por descumprir a LGPD. Qual risco de impacto se concretizou?",o:["Conformidade","Estratégico","Operacional","Roubo de identidade"],a:0,e:"Multas e sanções por descumprir leis e regulamentos são risco de conformidade."},
+{q:"Um sistema troca o número do cartão por um valor aleatório e guarda a correspondência numa tabela protegida. Essa técnica é:",o:["Tokenização","Hash","Mascaramento","Criptografia assimétrica"],a:0,e:"A tabela de correspondência (lookup) é a marca da tokenização, que por isso é reversível."},
+{q:"A fatura mostra o cartão como ****-****-****-4821. Qual técnica foi usada?",o:["Mascaramento","Tokenização","Hash","Segmentação"],a:0,e:"Mascaramento esconde parte do valor e mantém o restante visível."},
+{q:"Por que usar apenas hash para ofuscar CPFs numa base pode ser inseguro?",o:["O número de CPFs possíveis é limitado; o atacante pode calcular o hash de todos e comparar","O hash pode ser revertido com a chave privada","O hash muda a cada execução","O hash aumenta o tamanho do dado"],a:0,e:"Quando o universo de valores é pequeno, o atacante gera todos os hashes possíveis e encontra o valor original por comparação."},
+{q:"Uma solução de DLP inspeciona o tráfego na borda da rede sem instalar software nas estações. Ela é:",o:["Sem agente (baseada em rede)","Baseada em agente (host)","Baseada em marca d’água apenas","Um controle físico"],a:0,e:"DLP sem agente monitora o tráfego de rede. O baseado em agente roda no host e vê, por exemplo, cópia para pendrive."},
+{q:"Dados carregados na memória RAM enquanto uma aplicação os processa estão em qual estado?",o:["Em uso","Em repouso","Em trânsito","Arquivado"],a:0,e:"Em uso = sendo processado. Em repouso = armazenado. Em trânsito = atravessando a rede."},
+{q:"A empresa configura o acesso à VPN para aceitar conexões apenas de endereços IP localizados no Brasil. Isso é um exemplo de:",o:["Restrição geográfica","Mascaramento de dados","Controle dissuasivo","Isolamento por air gap"],a:0,e:"Limitar o acesso pela localização de origem é uma restrição de acesso geográfica."}
+];
+const quiz=makeQuiz({bank:Q,card:document.getElementById('qcard'),title:'Pronto para começar?',intro:'Questões sobre todo o capítulo.'});
+document.addEventListener('keydown',e=>quiz.key(e));
+document.addEventListener('visibilitychange',()=>document.hidden?quiz.pause():quiz.resume());
+</script>
+</body>
+</html>
